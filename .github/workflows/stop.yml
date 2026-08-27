@@ -1,4 +1,4 @@
-name: 每天定时停止指定任务
+name: 停止任务
 permissions:
   actions: write # 必须赋予 actions 写入权限，才能执行 cancel 操作
 on:
@@ -20,7 +20,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          WORKFLOW_NAME="Run prism555"
+          WORKFLOW_NAME="Continuous Infrastructure Task"
           
           # 1. 加上 -R 参数指定当前仓库
           RUN_IDS=$(gh run list -R "${{ github.repository }}" --workflow "$WORKFLOW_NAME" --status in_progress --json databaseId --jq '.[].databaseId')
